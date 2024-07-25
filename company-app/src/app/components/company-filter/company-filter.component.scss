@@ -1,0 +1,24 @@
+.company-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  &_input {
+    padding: 4px 6px;
+    border-radius: 5px;
+    border: 1px solid var(--blue);
+    outline: none;
+  }
+  &_select {
+    &__container {
+      display: flex;
+      gap: 18px;
+    }
+    &__input {
+      width: 200px;
+      padding: 4px 6px;
+      border-radius: 5px;
+      border: 1px solid var(--blue);
+      outline: none;
+    }
+  }
+}

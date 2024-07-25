@@ -1,0 +1,22 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+  align-items: center;
+  gap: 24px;
+  &_navbar {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    &__item {
+      text-decoration: none;
+      background-color: var(--blue);
+      color: var(--link-color);
+      padding: 10px 30px;
+      border-radius: 5px;
+      &:hover {
+        background-color: var(--grey);
+      }
+    }
+  }
+}

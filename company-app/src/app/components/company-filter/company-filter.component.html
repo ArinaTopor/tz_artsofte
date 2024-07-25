@@ -1,0 +1,27 @@
+<form [formGroup]="filterForm" class="company-filter">
+  <input
+    class="company-filter_input"
+    placeholder="Введите название компании"
+    formControlName="textBox"
+  />
+  <div class="company-filter_select__container">
+    <select
+      class="company-filter_select__input"
+      formControlName="selectBoxType"
+    >
+      <option value="">all</option>
+      <option [value]="type" *ngFor="let type of types | async">
+        {{ type }}
+      </option>
+    </select>
+    <select
+      class="company-filter_select__input"
+      formControlName="selectBoxIndustry"
+    >
+      <option value="">all</option>
+      <option [value]="industry" *ngFor="let industry of industries | async">
+        {{ industry }}
+      </option>
+    </select>
+  </div>
+</form>

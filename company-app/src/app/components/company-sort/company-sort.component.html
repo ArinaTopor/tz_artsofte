@@ -1,0 +1,8 @@
+<div class="company-sort">
+  <span>Сортировать по:</span>
+  <select class="company-sort_select" (change)="handleChangeSelect($event)">
+    <option [value]="option.value" *ngFor="let option of sortOptions">
+      {{ option.title }}
+    </option>
+  </select>
+</div>

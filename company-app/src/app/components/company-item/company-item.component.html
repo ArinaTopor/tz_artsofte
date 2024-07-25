@@ -1,0 +1,16 @@
+<div
+  class="company-item"
+  *ngIf="company"
+  [routerLink]="['detail/', company.id]"
+>
+  <img class="company-item_logo" alt="logo" [src]="company.logo" [width]="60" />
+  <div class="company-item_info">
+    <h2 class="company-item_info__title">{{ company.business_name }}</h2>
+    <div>
+      <p class="company-item_info__industry">
+        industry: {{ company.industry }}
+      </p>
+      <p class="company-item_info__type">type: {{ company.type }}</p>
+    </div>
+  </div>
+</div>
