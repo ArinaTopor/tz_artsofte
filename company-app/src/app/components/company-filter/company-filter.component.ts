@@ -1,7 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  EventEmitter,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CompaniesService } from '../../services/companies.service';
+import { FilterData, FilterForm } from '../../models/filter-form';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'company-filter',
@@ -9,16 +17,22 @@ import { CompaniesService } from '../../services/companies.service';
   styleUrl: './company-filter.component.scss',
 })
 export class CompanyFilter {
-  @Output() filterEvent = new EventEmitter<string>();
+  @Output() filterEvent = new EventEmitter<FilterData>();
   public types: Observable<string[]>;
   public industries: Observable<string[]>;
-  protected filterForm = new FormGroup({
-    textBox: new FormControl(''),
-    selectBoxType: new FormControl(''),
-    selectBoxIndustry: new FormControl(''),
+  protected filterForm = new FormGroup<FilterForm>({
+    textBox: new FormControl('', { nonNullable: true }),
+    selectBoxType: new FormControl('', { nonNullable: true }),
+    selectBoxIndustry: new FormControl('', { nonNullable: true }),
   });
-  constructor(companyService: CompaniesService) {
+  constructor(
+    companyService: CompaniesService,
+    private _destroyRef: DestroyRef
+  ) {
     this.types = companyService.getTypes();
     this.industries = companyService.getIndustries();
+    this.filterForm.valueChanges
+      .pipe(takeUntilDestroyed(_destroyRef))
+      .subscribe((data) => this.filterEvent.emit(data));
   }
 }

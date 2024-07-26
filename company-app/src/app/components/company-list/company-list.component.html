@@ -1,6 +1,6 @@
 <div class="company-list">
   <company-sort (sortEvent)="sortData($event)"></company-sort>
-  <company-filter></company-filter>
+  <company-filter (filterEvent)="getFilter($event)"></company-filter>
   <div>
     <company-item
       *ngFor="let company of dataCompanies | async"
