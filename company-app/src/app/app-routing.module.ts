@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-import { CompanyList } from './components/company-list/company-list.component';
+import { CompanyListComponent } from './components/company-list/company-list.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
 import { CompanyYandexMapComponent } from './components/map/company-yandex-map.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -9,7 +9,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    component: CompanyList,
+    component: CompanyListComponent,
   },
   {
     path: 'detail/:id',

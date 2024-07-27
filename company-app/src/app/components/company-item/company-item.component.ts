@@ -6,7 +6,7 @@ import { Company } from '../../models/company';
   templateUrl: './company-item.component.html',
   styleUrl: './company-item.component.scss',
 })
-export class CompanyItem {
+export class CompanyItemComponent {
   @Input() company?: Company;
   constructor() {}
 }

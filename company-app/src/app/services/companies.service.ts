@@ -5,9 +5,8 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CompaniesService {
-  private companiesSubject = new BehaviorSubject<Company[]>([]);
-  public companies$: Observable<Company[]> =
-    this.companiesSubject.asObservable();
+  private companiesBhvs = new BehaviorSubject<Company[]>([]);
+  public companies$: Observable<Company[]> = this.companiesBhvs.asObservable();
 
   constructor(private http: HttpClient) {
     this.loadCompanies();
@@ -19,7 +18,7 @@ export class CompaniesService {
         'https://random-data-api.com/api/company/random_company?size=100'
       )
       .subscribe((data) => {
-        this.companiesSubject.next(data);
+        this.companiesBhvs.next(data);
       });
   }
 

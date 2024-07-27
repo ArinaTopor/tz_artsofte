@@ -7,7 +7,7 @@ import { CompaniesService } from './companies.service';
 @Injectable({ providedIn: 'root' })
 export class DataCompaniesService {
   public sortKey: BehaviorSubject<string> = new BehaviorSubject('');
-  public dataFilter: BehaviorSubject<FilterData> =
+  public filterKeys: BehaviorSubject<FilterData> =
     new BehaviorSubject<FilterData>({
       textBox: '',
       selectBoxIndustry: '',
@@ -20,18 +20,13 @@ export class DataCompaniesService {
     this.transformDataCompanies$ = combineLatest([
       this._companyService.companies$,
       this.sortKey,
-      this.dataFilter,
+      this.filterKeys,
     ]).pipe(
-      map(([companies, sortKey, filterData]) => {
-        const filteredData = this.getFilter(companies, filterData);
+      map(([companies, sortKey, filterKeys]) => {
+        const filteredData = this.getFilter(companies, filterKeys);
         return this.sortList(filteredData, sortKey);
       })
     );
-  }
-
-  private sortList(companies: Company[], sortKey: string): Company[] {
-    if (!sortKey) return companies;
-    return companies.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
   }
 
   public updateSortKey(sortKey: string) {
@@ -39,7 +34,12 @@ export class DataCompaniesService {
   }
 
   public updateFilterData(filterData: FilterData) {
-    this.dataFilter.next(filterData);
+    this.filterKeys.next(filterData);
+  }
+
+  private sortList(companies: Company[], sortKey: string): Company[] {
+    if (!sortKey) return companies;
+    return companies.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
   }
 
   private getFilter(companies: Company[], filterData: FilterData): Company[] {

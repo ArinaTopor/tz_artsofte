@@ -6,12 +6,11 @@ import { CompanySortComponent } from './components/company-sort/company-sort.com
 import { provideHttpClient } from '@angular/common/http';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { CompanyList } from './components/company-list/company-list.component';
-import { CompanyItem } from './components/company-item/company-item.component';
+import { CompanyListComponent } from './components/company-list/company-list.component';
+import { CompanyItemComponent } from './components/company-item/company-item.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
-import { CompaniesService } from './services/companies.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CompanyFilter } from './components/company-filter/company-filter.component';
+import { CompanyFilterComponent } from './components/company-filter/company-filter.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +18,11 @@ import { CompanyFilter } from './components/company-filter/company-filter.compon
     CompanySortComponent,
     NotFoundComponent,
     LayoutComponent,
-    CompanyList,
-    CompanyItem,
+    CompanyListComponent,
+    CompanyItemComponent,
     CompanyDetailComponent,
     CompanySortComponent,
-    CompanyFilter,
+    CompanyFilterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [provideHttpClient()],

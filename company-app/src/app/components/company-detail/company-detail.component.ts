@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Company } from '../../models/company';
 import { Component, OnInit } from '@angular/core';
 import { CompaniesService } from '../../services/companies.service';

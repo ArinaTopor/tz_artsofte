@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CompanyItem } from '../company-item/company-item.component';
+import { CompanyItemComponent } from '../company-item/company-item.component';
 import { CompanySortComponent } from '../company-sort/company-sort.component';
 import { Observable } from 'rxjs';
 import { Company } from '../../models/company';
@@ -10,11 +10,11 @@ import { DataCompaniesService } from '../../services/data-companies.service';
   selector: 'company-list',
   templateUrl: './company-list.component.html',
   styleUrl: './company-list.component.scss',
-  providers: [CompanyItem, CompanySortComponent],
+  providers: [CompanyItemComponent, CompanySortComponent],
 })
-export class CompanyList {
+export class CompanyListComponent {
   public dataCompanies$: Observable<Company[]>;
-  public loading: boolean = false;
+  public loaded: boolean = false;
   constructor(private _dataCompaniesService: DataCompaniesService) {
     this.isLoad();
     this.dataCompanies$ = this._dataCompaniesService.transformDataCompanies$;
@@ -26,6 +26,6 @@ export class CompanyList {
     this._dataCompaniesService.updateFilterData(data);
   }
   public isLoad() {
-    setTimeout(() => (this.loading = true), 5000);
+    setTimeout(() => (this.loaded = true), 5000);
   }
 }

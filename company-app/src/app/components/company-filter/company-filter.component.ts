@@ -10,7 +10,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   templateUrl: './company-filter.component.html',
   styleUrl: './company-filter.component.scss',
 })
-export class CompanyFilter {
+export class CompanyFilterComponent {
   @Output() filterEvent = new EventEmitter<FilterData>();
   public types$: Observable<string[]>;
   public industries$: Observable<string[]>;
