@@ -12,7 +12,7 @@
         formControlName="selectBoxType"
       >
         <option value="">all</option>
-        <option [value]="type" *ngFor="let type of types | async">
+        <option [value]="type" *ngFor="let type of types$ | async">
           {{ type }}
         </option>
       </select>
@@ -24,7 +24,7 @@
         formControlName="selectBoxIndustry"
       >
         <option value="">all</option>
-        <option [value]="industry" *ngFor="let industry of industries | async">
+        <option [value]="industry" *ngFor="let industry of industries$ | async">
           {{ industry }}
         </option>
       </select>

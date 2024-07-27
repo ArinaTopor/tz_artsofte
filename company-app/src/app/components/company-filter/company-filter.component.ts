@@ -12,8 +12,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class CompanyFilter {
   @Output() filterEvent = new EventEmitter<FilterData>();
-  public types: Observable<string[]>;
-  public industries: Observable<string[]>;
+  public types$: Observable<string[]>;
+  public industries$: Observable<string[]>;
   protected filterForm = new FormGroup<FilterForm>({
     textBox: new FormControl('', { nonNullable: true }),
     selectBoxType: new FormControl('', { nonNullable: true }),
@@ -23,8 +23,8 @@ export class CompanyFilter {
     private _companyService: CompaniesService,
     private _destroyRef: DestroyRef
   ) {
-    this.types = this._companyService.getTypes();
-    this.industries = this._companyService.getIndustries();
+    this.types$ = this._companyService.getTypes();
+    this.industries$ = this._companyService.getIndustries();
     this.filterForm.valueChanges
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe((data) => this.filterEvent.emit(data));
