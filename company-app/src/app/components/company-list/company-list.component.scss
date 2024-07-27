@@ -3,18 +3,41 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  text-align: center;
   padding: 18px 36px;
+  text-align: center;
   background-color: var(--bg-component);
   border-radius: 5px;
   width: 800px;
-  height: 350px;
+  height: 390px;
 
-  & > div {
+  &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    padding: 8px 0 12px 0;
     overflow-y: auto;
+  }
+  &__loader {
+    position: relative;
+    background-color: var(--skeleton-base);
+    overflow: hidden;
+    width: 500px;
+    height: 118px;
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+      background: var(--skeleton-gradient);
+      animation: loading 1s infinite;
+    }
+  }
+}
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
   }
 }

@@ -1,10 +1,15 @@
 <div class="company-list">
-  <company-sort (sortEvent)="sortData($event)"></company-sort>
-  <company-filter (filterEvent)="getFilter($event)"></company-filter>
-  <div>
+  <company-sort (sortEvent)="updateSort($event)"></company-sort>
+  <company-filter (filterEvent)="updateFilter($event)"></company-filter>
+  <div class="company-list__container" *ngIf="loading; else loadingSection">
     <company-item
-      *ngFor="let company of dataCompanies | async"
+      *ngFor="let company of dataCompanies$ | async"
       [company]="company"
     ></company-item>
   </div>
 </div>
+<ng-template #loadingSection>
+  <div class="company-list__loader"></div>
+  <div class="company-list__loader"></div>
+  <div class="company-list__loader"></div>
+</ng-template>

@@ -13,13 +13,13 @@ export class CompanyDetailComponent implements OnInit {
   public company$: Observable<Company | undefined> | undefined;
 
   constructor(
-    private companyService: CompaniesService,
-    private activateRoute: ActivatedRoute
+    private _companyService: CompaniesService,
+    private _activateRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.company$ = this.activateRoute.params.pipe(
-      switchMap((params) => this.companyService.getCompanyById(+params['id']))
+    this.company$ = this._companyService.getCompanyById(
+      +this._activateRoute.snapshot.params['id']
     );
   }
 }

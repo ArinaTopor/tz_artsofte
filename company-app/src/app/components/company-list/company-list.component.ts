@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CompaniesService } from '../../services/companies.service';
 import { CompanyItem } from '../company-item/company-item.component';
 import { CompanySortComponent } from '../company-sort/company-sort.component';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Company } from '../../models/company';
 import { FilterData } from '../../models/filter-form';
+import { DataCompaniesService } from '../../services/data-companies.service';
 
 @Component({
   selector: 'company-list',
@@ -13,30 +13,19 @@ import { FilterData } from '../../models/filter-form';
   providers: [CompanyItem, CompanySortComponent],
 })
 export class CompanyList {
-  public dataCompanies: Observable<Company[]>;
-  constructor(private companiesService: CompaniesService) {
-    this.dataCompanies = this.companiesService.companies$;
+  public dataCompanies$: Observable<Company[]>;
+  public loading: boolean = false;
+  constructor(private _dataCompaniesService: DataCompaniesService) {
+    this.isLoad();
+    this.dataCompanies$ = this._dataCompaniesService.transformDataCompanies$;
   }
-  public sortData(key: string) {
-    this.dataCompanies = this.companiesService.sortList(key);
+  public updateSort(key: string) {
+    this._dataCompaniesService.updateSortKey(key);
   }
-  public sortAbdFilters(data?: FilterData, sortKey?: string) {}
-  public getFilter(data: FilterData) {
-    this.dataCompanies = this.companiesService.companies$.pipe(
-      switchMap((companies) => {
-        return of(
-          companies.filter(
-            (company) =>
-              (!data.textBox ||
-                company.business_name
-                  .toLocaleLowerCase()
-                  .includes(data.textBox.toLocaleLowerCase())) &&
-              (!data.selectBoxType || company.type === data.selectBoxType) &&
-              (!data.selectBoxIndustry ||
-                company.industry === data.selectBoxIndustry)
-          )
-        );
-      })
-    );
+  public updateFilter(data: FilterData) {
+    this._dataCompaniesService.updateFilterData(data);
+  }
+  public isLoad() {
+    setTimeout(() => (this.loading = true), 5000);
   }
 }

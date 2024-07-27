@@ -1,14 +1,14 @@
 <form [formGroup]="filterForm" class="company-filter">
   <input
-    class="company-filter_input"
+    class="company-filter-input"
     placeholder="Input name the company"
     formControlName="textBox"
   />
-  <div class="company-filter_select__container">
+  <div class="company-filter__select">
     <div>
       <label>Select type:</label>
       <select
-        class="company-filter_select__input"
+        class="company-filter__select-input"
         formControlName="selectBoxType"
       >
         <option value="">all</option>
@@ -20,7 +20,7 @@
     <div>
       <label>Select industry:</label>
       <select
-        class="company-filter_select__input"
+        class="company-filter__select-input"
         formControlName="selectBoxIndustry"
       >
         <option value="">all</option>

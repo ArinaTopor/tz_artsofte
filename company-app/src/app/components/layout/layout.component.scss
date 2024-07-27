@@ -3,12 +3,12 @@
   flex-direction: column;
   margin-top: 48px;
   align-items: center;
-  gap: 24px;
-  &_navbar {
+  gap: 12px;
+  &__navbar {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    &__item {
+    &-item {
       text-decoration: none;
       background-color: var(--blue);
       color: var(--link-color);

@@ -1,10 +1,4 @@
-import {
-  Component,
-  DestroyRef,
-  EventEmitter,
-  OnDestroy,
-  Output,
-} from '@angular/core';
+import { Component, DestroyRef, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CompaniesService } from '../../services/companies.service';
@@ -26,13 +20,13 @@ export class CompanyFilter {
     selectBoxIndustry: new FormControl('', { nonNullable: true }),
   });
   constructor(
-    companyService: CompaniesService,
+    private _companyService: CompaniesService,
     private _destroyRef: DestroyRef
   ) {
-    this.types = companyService.getTypes();
-    this.industries = companyService.getIndustries();
+    this.types = this._companyService.getTypes();
+    this.industries = this._companyService.getIndustries();
     this.filterForm.valueChanges
-      .pipe(takeUntilDestroyed(_destroyRef))
+      .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe((data) => this.filterEvent.emit(data));
   }
 }

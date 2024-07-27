@@ -9,13 +9,13 @@
   padding: 4px 24px;
   cursor: pointer;
   &:hover {
-    box-shadow: 0px 3px 6px 1px rgb(0, 0, 0, 0.4);
+    box-shadow: 0px 2px 8px 1px rgb(0, 0, 0, 0.4);
   }
-  &_info {
+  &__info {
     display: flex;
     text-align: start;
     flex-direction: column;
-    &__title {
+    &-title {
       font-weight: 700;
       font-size: 1rem;
       padding: 0;

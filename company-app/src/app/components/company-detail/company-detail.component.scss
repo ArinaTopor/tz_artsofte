@@ -1,6 +1,6 @@
 .company-detail {
   width: 800px;
-  &_quote {
+  &-quote {
     display: flex;
     justify-content: center;
     background-color: var(--red);
@@ -19,7 +19,7 @@
       }
     }
   }
-  &_header {
+  &__header {
     display: flex;
     gap: 18px;
     align-items: center;

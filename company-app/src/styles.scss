@@ -8,4 +8,11 @@
   --grey: #333;
   --red: #fc5454;
   --bg-component: #effbff;
+  --skeleton-base: rgb(235, 235, 235);
+  --skeleton-gradient: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4)
+    ),
+    transparent;
 }

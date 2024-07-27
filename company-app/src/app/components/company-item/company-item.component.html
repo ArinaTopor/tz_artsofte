@@ -3,14 +3,14 @@
   *ngIf="company"
   [routerLink]="['detail/', company.id]"
 >
-  <img class="company-item_logo" alt="logo" [src]="company.logo" [width]="60" />
-  <div class="company-item_info">
-    <h2 class="company-item_info__title">{{ company.business_name }}</h2>
+  <img class="company-item-logo" alt="logo" [src]="company.logo" [width]="60" />
+  <div class="company-item__info">
+    <h2 class="company-item__info-title">{{ company.business_name }}</h2>
     <div>
-      <p class="company-item_info__industry">
+      <p class="company-item__info-industry">
         industry: {{ company.industry }}
       </p>
-      <p class="company-item_info__type">type: {{ company.type }}</p>
+      <p class="company-item__info-type">type: {{ company.type }}</p>
     </div>
   </div>
 </div>
