@@ -1,0 +1,15 @@
+<div class="company-detail" *ngIf="company$ | async as company">
+  <div class="company-detail__header">
+    <img alt="logo" [src]="company.logo" width="150" />
+    <h1>"{{ company.business_name }}"</h1>
+  </div>
+  <p>Industry: {{ company.industry }}</p>
+  <blockquote class="company-detail-quote">
+    <p>{{ company.catch_phrase }}</p>
+  </blockquote>
+  <p>
+    Phone:
+    <a type="phone" [href]="">{{ company.phone_number }}</a>
+  </p>
+  <p>Address: {{ company.full_address }}</p>
+</div>
